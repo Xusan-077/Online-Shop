@@ -3,11 +3,12 @@ import { Link, NavLink } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import Location from "../../assets/icons/Location.svg";
+import Location from "../../assets/icons/location.svg";
 import Search from "../../assets/icons/search.svg";
 import Kirish from "../../assets/icons/Kirish.svg";
 import Saralangan from "../../assets/icons/Saralangan.svg";
 import Savat from "../../assets/icons/Savat.svg";
+
 import { useAppContext } from "../../hooks/useAppContext";
 
 export default function Header() {
