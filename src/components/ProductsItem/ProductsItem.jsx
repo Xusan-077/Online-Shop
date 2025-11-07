@@ -111,7 +111,7 @@ export default function ProductItem({
                   : "text-white"
               }  text-6`}
             >
-              {availabilityStatus == "Low Stock" ? "Low Stock" : "+ Savatga"}
+              {availabilityStatus == "Low Stock" ? "Low Stock" : "Savatga"}
             </span>
           </button>
         ) : (
