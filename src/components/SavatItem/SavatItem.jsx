@@ -1,7 +1,10 @@
 import { toast } from "react-toastify";
 import { useAppContext } from "../../hooks/useAppContext";
+import { useNavigate } from "react-router-dom";
 
 function SavatItem({ count, product }) {
+  const navigate = useNavigate();
+
   const { cart, setCart } = useAppContext();
 
   const handleAdd = () => {
@@ -10,6 +13,10 @@ function SavatItem({ count, product }) {
     );
     setCart(updated);
   };
+
+  function handleNavigate(Id) {
+    navigate(`/products/${Id}`);
+  }
 
   const handleRemove = () => {
     if (count === 1) {
@@ -31,11 +38,8 @@ function SavatItem({ count, product }) {
   }
 
   return (
-    <li
-      key={product.id}
-      className="cursor-pointer w-full p-[10px_20px_0_20px] bg-white"
-    >
-      <div className="mb-5">
+    <li key={product.id} className="w-full p-[10px_20px_0_20px] bg-white">
+      <div className="mb-8">
         <span className="text-[12px] text-[#7e818c]">
           Uzum Market yetkazib berishi
         </span>
@@ -46,9 +50,10 @@ function SavatItem({ count, product }) {
       <div className="flex items-start gap-4">
         {product.thumbnail ? (
           <img
+            onClick={() => handleNavigate(product.id)}
             src={product.thumbnail}
             alt={product.title}
-            className="w-[100px] h-[100px] object-contain"
+            className="w-[150px] cursor-pointer h-[100px] object-contain"
           />
         ) : (
           <div className="w-24 h-24 bg-gray-300 rounded-lg"></div>

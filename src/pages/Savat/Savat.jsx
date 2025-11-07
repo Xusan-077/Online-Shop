@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
 import { useAppContext } from "../../hooks/useAppContext";
 import { Link } from "react-router-dom";
 import SavatItem from "../../components/SavatItem/SavatItem";
+import Products from "../Products/Products";
 
 export default function Savat() {
-  const { cart, setCart } = useAppContext();
+  const { cart } = useAppContext();
 
   console.log(cart);
 

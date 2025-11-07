@@ -91,32 +91,6 @@ export default function Products() {
           </ul>
         )}
 
-        {/* <div className="flex items-center gap-10 justify-center mt-5">
-          <select onChange={(evt) => setLimit(Number(evt.target.value))}>
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="30">30</option>
-          </select>
-          <button
-            className={`cursor-pointer ${page === 0 ? "opacity-40" : ""} `}
-            disabled={page === 0}
-            onClick={() => setPage(page - 1)}
-          >
-            prev
-          </button>
-          {page + 1}/{Math.ceil(totalPage / limit)}
-          <button
-            className={`cursor-pointer ${
-              page + 1 === Math.ceil(totalPage / limit) ? "opacity-40" : ""
-            } `}
-            disabled={page + 1 === Math.ceil(totalPage / limit)}
-            onClick={() => setPage(page + 1)}
-          >
-            next
-          </button>
-        </div> 
-        */}
-
         <div className="flex items-center gap-10 justify-center mt-5">
           <button
             className={`cursor-pointer ${page === 0 ? "opacity-40" : ""} `}
