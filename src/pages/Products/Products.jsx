@@ -4,6 +4,7 @@ import { Autoplay, Navigation } from "swiper/modules";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ProductItem from "../../components/ProductsItem/ProductsItem";
+import ProductCardSkeleton from "../../components/ProductCardSkeleton/ProductCardSkeleton";
 
 export default function Products() {
   const [page, setPage] = useState(0);
@@ -36,36 +37,40 @@ export default function Products() {
     <>
       <div className="container">
         <div className="mt-5 mb-[50px]">
-          <Swiper
-            modules={[Autoplay, Navigation]}
-            navigation
-            autoplay={{ delay: 3000 }}
-            pagination={{ clickable: true }}
-            loop
-            className="w-full h-[400px]"
-          >
-            <SwiperSlide key="1">
-              <img
-                className="rounded-xl"
-                src="https://images.uzum.uz/d44rthdv2sjo4rvgd0jg/main_page_banner.jpg"
-                alt=""
-              />
-            </SwiperSlide>
-            <SwiperSlide key="2">
-              <img
-                className="rounded-xl"
-                src="https://images.uzum.uz/d44tp2mj76ohd6dvot9g/main_page_banner.jpg"
-                alt=""
-              />
-            </SwiperSlide>
-            <SwiperSlide key="3">
-              <img
-                className="rounded-xl"
-                src="https://images.uzum.uz/d3rg2v34eu2v7vmclj70/main_page_banner.jpg"
-                alt=""
-              />
-            </SwiperSlide>
-          </Swiper>
+          {isLoading ? (
+            <div className="flex justify-center items-center h-[400px] rounded-lg bg-gray-200"></div>
+          ) : (
+            <Swiper
+              modules={[Autoplay, Navigation]}
+              navigation
+              autoplay={{ delay: 3000 }}
+              pagination={{ clickable: true }}
+              loop
+              className="w-full h-[400px]"
+            >
+              <SwiperSlide key="1">
+                <img
+                  className="rounded-xl"
+                  src="https://images.uzum.uz/d44rthdv2sjo4rvgd0jg/main_page_banner.jpg"
+                  alt=""
+                />
+              </SwiperSlide>
+              <SwiperSlide key="2">
+                <img
+                  className="rounded-xl"
+                  src="https://images.uzum.uz/d44tp2mj76ohd6dvot9g/main_page_banner.jpg"
+                  alt=""
+                />
+              </SwiperSlide>
+              <SwiperSlide key="3">
+                <img
+                  className="rounded-xl"
+                  src="https://images.uzum.uz/d3rg2v34eu2v7vmclj70/main_page_banner.jpg"
+                  alt=""
+                />
+              </SwiperSlide>
+            </Swiper>
+          )}
         </div>
 
         <h1 className="text-[30px]  mb-5 font-bold  text-black">
@@ -73,7 +78,11 @@ export default function Products() {
         </h1>
 
         {isLoading ? (
-          <p className="text-center text-[20px] text-red-500">Loading...</p>
+          <ul className="grid gap-6 grid-cols-5 max-w-7xl mx-auto">
+            {Array.from({ length: 10 }).map((_, i) => (
+              <ProductCardSkeleton key={i} />
+            ))}
+          </ul>
         ) : (
           <ul className="grid gap-6 grid-cols-5 max-w-7xl mx-auto">
             {products.map((el) => (

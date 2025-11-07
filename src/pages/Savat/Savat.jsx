@@ -42,7 +42,6 @@ export default function Savat() {
         ) : (
           <div className="">
             <h1 className="text-[28px] font-bold mb-6">Savat</h1>
-
             <div className="flex justify-between items-start">
               <ul className="flex flex-col w-[70%] border-gray-300  shadow-sm border ">
                 {cart.map(({ product, count }) => {
@@ -75,11 +74,16 @@ export default function Savat() {
                       key={product.id}
                       className="flex items-start gap-4 border-b-gray-500 border-b pb-[30px] w-full  p-4 bg-white"
                     >
-                      <img
-                        src={product.thumbnail}
-                        alt={product.title}
-                        className="w-[100px] h-[100px] object-contain"
-                      />
+                      {product.thumbnail ? (
+                        <img
+                          src={product.thumbnail}
+                          alt={product.title}
+                          className="w-[100px] h-[100px] object-contain"
+                        />
+                      ) : (
+                        <div className="w-24 h-24 bg-gray-300 rounded-lg"></div>
+                      )}
+
                       <div className="flex flex-col flex-1">
                         <h3 className="text-base font-semibold">
                           {product.title}
