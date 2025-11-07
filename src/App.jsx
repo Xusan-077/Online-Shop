@@ -6,6 +6,7 @@ import NotFound from "./pages/NotFound";
 import Savat from "./pages/Savat/Savat";
 import { Context } from "./context";
 import { useEffect, useState } from "react";
+import { ToastContainer } from "react-toastify";
 
 export default function App() {
   const [cart, setCart] = useState(() => {
@@ -22,15 +23,27 @@ export default function App() {
   }, [cart]);
 
   return (
-    <Context.Provider value={{ cart, setCart }}>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path="/" element={<Products />} />
-          <Route path="products/:newId" element={<ProductDetail />} />
-          <Route path="*" element={<NotFound />} />
-          <Route path="/savat" element={<Savat />} />
-        </Route>
-      </Routes>
-    </Context.Provider>
+    <>
+      <Context.Provider value={{ cart, setCart }}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route path="/" element={<Products />} />
+            <Route path="products/:newId" element={<ProductDetail />} />
+            <Route path="*" element={<NotFound />} />
+            <Route path="/savat" element={<Savat />} />
+          </Route>
+        </Routes>
+      </Context.Provider>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnHover
+        theme="colored"
+      />
+    </>
   );
 }

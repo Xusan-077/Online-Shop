@@ -14,7 +14,7 @@ export default function Products() {
 
   const [totalPage, setTotalPage] = useState(0);
 
-  let [limit, setLimit] = useState(10);
+  let [limit, setLimit] = useState(20);
 
   async function getProducts() {
     setIsLoading(true);
@@ -91,7 +91,7 @@ export default function Products() {
           </ul>
         )}
 
-        <div className="flex items-center gap-10 justify-center mt-5">
+        {/* <div className="flex items-center gap-10 justify-center mt-5">
           <select onChange={(evt) => setLimit(Number(evt.target.value))}>
             <option value="10">10</option>
             <option value="20">20</option>
@@ -114,6 +114,48 @@ export default function Products() {
           >
             next
           </button>
+        </div> 
+        */}
+
+        <div className="flex items-center gap-10 justify-center mt-5">
+          <button
+            className={`cursor-pointer ${page === 0 ? "opacity-40" : ""} `}
+            disabled={page === 0}
+            onClick={() => setPage(page - 1)}
+          >
+            prev
+          </button>
+          <div className="flex gap-5">
+            {Array.from({
+              length: Math.ceil(totalPage / limit),
+            }).map((el, index) => (
+              <div
+                key={index}
+                onClick={(evt) => setPage(0 + evt.target.innerHTML)}
+                className={`${
+                  index + 1 == page
+                    ? "border-gray-500 border rounded-[3px]"
+                    : ""
+                }   cursor-pointer  p-[10px_15px]  `}
+              >
+                {index + 1}
+              </div>
+            ))}
+          </div>
+          <button
+            className={`cursor-pointer ${
+              page + 1 === Math.ceil(totalPage / limit) ? "opacity-40" : ""
+            } `}
+            disabled={page + 1 === Math.ceil(totalPage / limit)}
+            onClick={() => setPage(page + 1)}
+          >
+            next
+          </button>
+          <select onChange={(evt) => setLimit(Number(evt.target.value))}>
+            <option value="20">20</option>
+            <option value="30">30</option>
+            <option value="40">40</option>
+          </select>
         </div>
       </div>
     </>

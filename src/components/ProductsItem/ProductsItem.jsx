@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../../hooks/useAppContext";
+import { toast } from "react-toastify";
 
 export default function ProductItem({
   title,
@@ -31,6 +32,7 @@ export default function ProductItem({
       setCart(updatedCart);
     } else {
       setCart([...cart, { product, count: 1 }]);
+      toast.success("Product added to cart");
     }
   }
 
