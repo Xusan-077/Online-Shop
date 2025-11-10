@@ -54,14 +54,14 @@ export default function ProductItem({
   }
 
   return (
-    <li className="bg-white rounded-lg hover:shadow-sm flex flex-col">
-      <div className="relative w-full overflow-hidden p-[20px_0_0_0]">
+    <li className="bg-white rounded-lg overflow-hidden hover:shadow-sm duration-300 flex flex-col">
+      <div className="relative w-full h-56 overflow-hidden p-[20px_0_0_0]">
         <div className="flex justify-center">
           <img
             onClick={() => handleNavigate(id)}
             src={thumbnail}
             alt={title}
-            className="w-full cursor-pointer h-[180px] object-contain"
+            className="w-full cursor-pointer  h-[180px] object-contain"
           />
         </div>
         <span
@@ -112,7 +112,7 @@ export default function ProductItem({
                 onClick={handleAddToCart}
                 className={`${
                   availabilityStatus == "Low Stock" ? "" : "bg-[#7000FFFF] "
-                } cursor-pointer  items-center justify-center w-full gap-[5px] p-[8px_0] rounded-lg`}
+                } cursor-pointer flex items-center justify-center w-full gap-[5px] p-[8px_0] rounded-lg`}
               >
                 <span
                   className={`${

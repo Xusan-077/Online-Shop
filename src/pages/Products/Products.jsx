@@ -41,7 +41,7 @@ export default function Products() {
   return (
     <section className="products">
       <div className="container">
-        {/* <div className="products__slider-wrapper mt-5 mb-[50px]">
+        <div className="products__slider-wrapper mt-5 mb-[50px]">
           {isLoading ? (
             <div className="products__slider-loading flex justify-center items-center h-[400px] rounded-lg bg-gray-200"></div>
           ) : (
@@ -76,7 +76,7 @@ export default function Products() {
               </SwiperSlide>
             </Swiper>
           )}
-        </div> */}
+        </div>
 
         <h1 className="products__title text-[30px] mb-5 font-bold text-black">
           {t("products.price")}
