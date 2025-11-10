@@ -5,8 +5,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import ProductItem from "../../components/ProductsItem/ProductsItem";
 import ProductCardSkeleton from "../../components/ProductCardSkeleton/ProductCardSkeleton";
+import { useTranslation } from "react-i18next";
 
 export default function Products() {
+  const { t } = useTranslation();
+
   const [page, setPage] = useState(0);
   const [products, setProducts] = useState([]);
 
@@ -25,6 +28,8 @@ export default function Products() {
 
     setIsLoading(false);
 
+    console.log(res.data.products);
+
     setProducts(res.data.products);
     setTotalPage(res.data.total);
   }
@@ -34,104 +39,119 @@ export default function Products() {
   }, [page, limit]);
 
   return (
-    <>
+    <section className="products">
       <div className="container">
-        <div className="mt-5 mb-[50px]">
+        {/* <div className="products__slider-wrapper mt-5 mb-[50px]">
           {isLoading ? (
-            <div className="flex justify-center items-center h-[400px] rounded-lg bg-gray-200"></div>
+            <div className="products__slider-loading flex justify-center items-center h-[400px] rounded-lg bg-gray-200"></div>
           ) : (
             <Swiper
-              modules={[Autoplay, Navigation]}
+              modules={[Autoplay]}
               navigation
               autoplay={{ delay: 3000 }}
               pagination={{ clickable: true }}
               loop
-              className="w-full h-[400px]"
+              className="products__slider w-full h-[400px]"
             >
-              <SwiperSlide key="1">
+              <SwiperSlide key="1" className="products__slide">
                 <img
-                  className="rounded-xl"
+                  className="products__slide-img rounded-xl"
                   src="https://images.uzum.uz/d44rthdv2sjo4rvgd0jg/main_page_banner.jpg"
-                  alt=""
+                  alt="banner 1"
                 />
               </SwiperSlide>
-              <SwiperSlide key="2">
+              <SwiperSlide key="2" className="products__slide">
                 <img
-                  className="rounded-xl"
+                  className="products__slide-img rounded-xl"
                   src="https://images.uzum.uz/d44tp2mj76ohd6dvot9g/main_page_banner.jpg"
-                  alt=""
+                  alt="banner 2"
                 />
               </SwiperSlide>
-              <SwiperSlide key="3">
+              <SwiperSlide key="3" className="products__slide">
                 <img
-                  className="rounded-xl"
+                  className="products__slide-img rounded-xl"
                   src="https://images.uzum.uz/d3rg2v34eu2v7vmclj70/main_page_banner.jpg"
-                  alt=""
+                  alt="banner 3"
                 />
               </SwiperSlide>
             </Swiper>
           )}
-        </div>
+        </div> */}
 
-        <h1 className="text-[30px]  mb-5 font-bold  text-black">
-          Arzon narxlar
+        <h1 className="products__title text-[30px] mb-5 font-bold text-black">
+          {t("products.price")}
         </h1>
 
         {isLoading ? (
-          <ul className="grid gap-6 grid-cols-5 max-w-7xl mx-auto">
+          <ul className="products__list grid gap-6 grid-cols-5">
             {Array.from({ length: 10 }).map((_, i) => (
               <ProductCardSkeleton key={i} />
             ))}
           </ul>
         ) : (
-          <ul className="grid gap-6 grid-cols-5 max-w-7xl mx-auto">
+          <ul className="products__list grid items-center gap-6 grid-cols-5">
             {products.map((el) => (
-              <ProductItem product={el} key={el.id} {...el} />
+              <ProductItem
+                className="products__item"
+                products={products}
+                setProducts={setProducts}
+                product={el}
+                key={el.id}
+                {...el}
+              />
             ))}
           </ul>
         )}
 
-        <div className="flex items-center gap-10 justify-center mt-5">
+        <div className="products__pagination flex items-center gap-10 justify-center mt-5">
           <button
-            className={`cursor-pointer ${page === 0 ? "opacity-40" : ""} `}
+            className={`products__btn-prev cursor-pointer ${
+              page === 0 ? "opacity-40" : ""
+            }`}
             disabled={page === 0}
             onClick={() => setPage(page - 1)}
           >
-            prev
+            {t("products.pagination.prev")}
           </button>
-          <div className="flex gap-5">
-            {Array.from({
-              length: Math.ceil(totalPage / limit),
-            }).map((el, index) => (
-              <div
-                key={index}
-                onClick={(evt) => setPage(0 + evt.target.innerHTML)}
-                className={`${
-                  index + 1 == page
-                    ? "border-gray-500 border rounded-[3px]"
-                    : ""
-                }   cursor-pointer  p-[10px_15px]  `}
-              >
-                {index + 1}
-              </div>
-            ))}
+
+          <div className="products__pages flex gap-5">
+            {Array.from({ length: Math.ceil(totalPage / limit) }).map(
+              (el, index) => (
+                <div
+                  key={index}
+                  onClick={(evt) => setPage(0 + evt.target.innerHTML)}
+                  className={`products__page-number ${
+                    index + 1 == page
+                      ? "border-gray-500 border rounded-[3px]"
+                      : ""
+                  } cursor-pointer p-[10px_15px]`}
+                >
+                  {index + 1}
+                </div>
+              )
+            )}
           </div>
+
           <button
-            className={`cursor-pointer ${
+            className={`products__btn-next cursor-pointer ${
               page + 1 === Math.ceil(totalPage / limit) ? "opacity-40" : ""
-            } `}
+            }`}
             disabled={page + 1 === Math.ceil(totalPage / limit)}
             onClick={() => setPage(page + 1)}
           >
-            next
+            {t("products.pagination.next")}
           </button>
-          <select onChange={(evt) => setLimit(Number(evt.target.value))}>
+
+          <select
+            className="products__limit-select"
+            onChange={(evt) => setLimit(Number(evt.target.value))}
+          >
             <option value="20">20</option>
             <option value="30">30</option>
             <option value="40">40</option>
           </select>
         </div>
       </div>
-    </>
+    </section>
   );
 }

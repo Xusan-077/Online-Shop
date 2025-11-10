@@ -1,0 +1,62 @@
+{
+  "welcome": "hello",
+  "header": {
+    "location": "City",
+    "points": "Pickup points",
+    "order": "We deliver your order for free in 1 day!",
+    "Questions": "FAQ",
+    "MyOrders": "My Orders",
+    "search": "Search products and categories",
+    "access": "login",
+    "Sorted": "Sorted",
+    "basket": "basket",
+    "list": {
+      "Elektronika": "Electronics",
+      "texnika": "Appliances",
+      "kiyim": "Clothing",
+      "poyabzallar": "Shoes",
+      "aksessuarlar": "Accessories",
+      "parvarish": "Beauty & Care",
+      "Salomatlik": "Health",
+      "buyumlari": "Home goods",
+      "Qurilish": "Construction"
+    }
+  },
+  "products": {
+    "price": "Low prices",
+    "basket": "Add to basket",
+    "low": "Low stock",
+    "pagination": {
+      "prev": "Previous",
+      "next": "Next"
+    }
+  },
+  "savat": {
+    "delivery": "Delivered by Uzum Market",
+    "tomorrow": "Delivered tomorrow",
+    "seller": "Seller",
+    "delete": "delete",
+    "order": "Your order",
+    "products": "Products",
+    "total": "Total",
+    "formalization": "Proceed to checkout",
+    "following": "Also bought with this product:"
+  },
+  "detail": {
+    "Category": "Category",
+    "addToCart": "Add to Cart",
+    "lowStock": "Low Stock",
+    "goToCart": "Go to Cart",
+    "deliveryTomorrow": "Delivery Tomorrow",
+    "deliveryInfo": "To pickup point or by courier",
+    "depth": "Depth",
+    "height": "Height",
+    "width": "Width",
+    "reviews": "Reviews"
+  },
+  "404": {
+    "title": "Page not found",
+    "text": "Sorry, the page you are looking for does not exist or has been removed.",
+    "back": "back"
+  }
+}

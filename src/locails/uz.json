@@ -1,0 +1,62 @@
+{
+  "welcome": "salom",
+  "header": {
+    "location": "Shahar",
+    "points": "Topshirish punktlari",
+    "order": "Buyurtmangizni 1 kunda bepul yetkazib beramiz!",
+    "Questions": "Savol-javoblar",
+    "MyOrders": "Buyurtmalarim",
+    "search": "Mahsulotlar va turkumlar izlash",
+    "access": "kirish",
+    "Sorted": "Saralangan",
+    "basket": "savat",
+    "list": {
+      "Elektronika": "Elektronika",
+      "texnika": "texnika",
+      "kiyim": "kiyim",
+      "poyabzallar": "poyabzallar",
+      "aksessuarlar": "aksessuarlar",
+      "parvarish": "parvarish",
+      "Salomatlik": "Salomatlik",
+      "buyumlari": "buyumlari",
+      "Qurilish": "Qurilish"
+    }
+  },
+  "products": {
+    "price": "Arzon narxlar",
+    "basket": "Savatga",
+    "low": "kam zaxira",
+    "pagination": {
+      "prev": "Oldingga",
+      "next": "Keyingisi"
+    }
+  },
+  "savat": {
+    "delivery": "Uzum Market yetkazib berishi",
+    "tomorrow": "Ertaga yetkazib beramiz",
+    "seller": "Sotuvchi",
+    "delete": "yo`q qilish",
+    "order": "Buyurtmangiz",
+    "products": "Mahsulotlar",
+    "total": "Jami",
+    "formalization": "Rasmiylashtirishga o‘tish",
+    "following": "Bu mahsulot bilan quyidagilar xarid qilinadi:"
+  },
+  "detail": {
+    "Category": "Turkum",
+    "addToCart": "Savatga",
+    "lowStock": "Kam qoldi",
+    "goToCart": "O‘tish",
+    "deliveryTomorrow": "Ertaga yetkazib beramiz",
+    "deliveryInfo": "Qabul qilish punktiga yoki kurer orqali",
+    "depth": "Chuqurlik",
+    "height": "Balandlik",
+    "width": "Kenglik",
+    "reviews": "Sharhlar"
+  },
+  "404": {
+    "title": "Sahifa topilmadi",
+    "text": "Kechirasiz, siz izlagan sahifa mavjud emas yoki o‘chirilgan.",
+    "back": "qaytish"
+  }
+}

@@ -14,6 +14,11 @@ export default function App() {
     return cart ? JSON.parse(cart) : [];
   });
 
+  const [like, setLike] = useState(() => {
+    const like = localStorage.getItem("like");
+    return like ? JSON.parse(like) : [];
+  });
+
   useEffect(() => {
     if (cart) {
       localStorage.setItem("cart", JSON.stringify(cart));
@@ -22,9 +27,17 @@ export default function App() {
     }
   }, [cart]);
 
+  useEffect(() => {
+    if (like) {
+      localStorage.setItem("like", JSON.stringify(like));
+    } else {
+      localStorage.removeItem("like");
+    }
+  }, [like]);
+
   return (
     <>
-      <Context.Provider value={{ cart, setCart }}>
+      <Context.Provider value={{ cart, setCart, like, setLike }}>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route path="/" element={<Products />} />

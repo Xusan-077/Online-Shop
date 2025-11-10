@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../../hooks/useAppContext";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 export default function ProductItem({
   title,
@@ -14,9 +15,13 @@ export default function ProductItem({
   category,
   id,
   product,
+  setProducts,
+  products,
 }) {
+  const { t } = useTranslation();
+
   const navigate = useNavigate();
-  const { cart, setCart } = useAppContext();
+  const { cart, setCart, setLike, like } = useAppContext();
 
   const inCart = cart.find((el) => el.product.id === product.id);
 
@@ -49,14 +54,14 @@ export default function ProductItem({
   }
 
   return (
-    <li className="bg-white rounded-lg overflow-hidden hover:shadow-sm duration-300 flex flex-col">
-      <div className="relative w-full h-56 overflow-hidden p-[20px_0_0_0]">
+    <li className="bg-white rounded-lg hover:shadow-sm flex flex-col">
+      <div className="relative w-full overflow-hidden p-[20px_0_0_0]">
         <div className="flex justify-center">
           <img
             onClick={() => handleNavigate(id)}
             src={thumbnail}
             alt={title}
-            className="w-full cursor-pointer  h-[180px] object-contain"
+            className="w-full cursor-pointer h-[180px] object-contain"
           />
         </div>
         <span
@@ -66,7 +71,7 @@ export default function ProductItem({
           {category}
         </span>
       </div>
-      <div className="flex justify-between items-center mb-3">
+      <div className="">
         <div className="flex flex-col p-4">
           <div className="mb-5">
             <span className="text-[14px] font-bold text-gray-500">
@@ -107,7 +112,7 @@ export default function ProductItem({
                 onClick={handleAddToCart}
                 className={`${
                   availabilityStatus == "Low Stock" ? "" : "bg-[#7000FFFF] "
-                } cursor-pointer flex items-center justify-center w-full gap-[5px] p-[8px_0] rounded-lg`}
+                } cursor-pointer  items-center justify-center w-full gap-[5px] p-[8px_0] rounded-lg`}
               >
                 <span
                   className={`${
@@ -116,7 +121,9 @@ export default function ProductItem({
                       : "text-white"
                   }  text-6`}
                 >
-                  {availabilityStatus == "Low Stock" ? "Low Stock" : "Savatga"}
+                  {availabilityStatus == "Low Stock"
+                    ? t("products.low")
+                    : t("products.basket")}
                 </span>
               </button>
             ) : (
