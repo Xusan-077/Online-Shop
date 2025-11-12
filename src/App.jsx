@@ -7,7 +7,7 @@ import Savat from "./pages/Savat/Savat";
 import { Context } from "./context";
 import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
-import Saralangan from "./pages/saralangan/saralangan";
+import Saralangan from "./pages/saralangan/Saralangan";
 
 export default function App() {
   const [cart, setCart] = useState(() => {
