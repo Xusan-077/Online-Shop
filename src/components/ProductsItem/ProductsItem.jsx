@@ -53,15 +53,38 @@ export default function ProductItem({
     }
   }
 
+  function handleSaveToLike() {
+    const inLike = like.find((el) => el.id === product.id);
+
+    if (inLike) {
+      setLike(like.filter((el) => el.id !== product.id));
+    } else {
+      setLike([...like, product]);
+    }
+  }
+
   return (
-    <li className="bg-white rounded-lg overflow-hidden hover:shadow-sm duration-300 flex flex-col">
-      <div className="relative w-full h-56 overflow-hidden p-[20px_0_0_0]">
+    <li className="bg-white relative rounded-lg overflow-hidden hover:shadow-sm duration-300 flex flex-col">
+      <div className="relative w-full h-56 overflow-hidden bg-[#EFEFEFFF]">
+        <div
+          onClick={handleSaveToLike}
+          className="w-[30px] cursor-pointer h-[30px] rounded-full flex items-center justify-center bg-white absolute z-11 top-2.5 right-2.5"
+        >
+          <i
+            className={`bi ${
+              like.find((el) => el.id === product.id)
+                ? "bi-heart-fill text-[#7000FFFF]"
+                : "bi-heart"
+            } text-[18px]`}
+          ></i>
+        </div>
+
         <div className="flex justify-center">
           <img
             onClick={() => handleNavigate(id)}
             src={thumbnail}
             alt={title}
-            className="w-full cursor-pointer  h-[180px] object-contain"
+            className="w-full cursor-pointer h-[180px] object-contain"
           />
         </div>
         <span

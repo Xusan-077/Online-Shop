@@ -7,6 +7,7 @@ import Savat from "./pages/Savat/Savat";
 import { Context } from "./context";
 import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
+import Saralangan from "./pages/saralangan/saralangan";
 
 export default function App() {
   const [cart, setCart] = useState(() => {
@@ -44,6 +45,7 @@ export default function App() {
             <Route path="products/:newId" element={<ProductDetail />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/savat" element={<Savat />} />
+            <Route path="/saralangan" element={<Saralangan />} />
           </Route>
         </Routes>
       </Context.Provider>

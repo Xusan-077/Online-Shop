@@ -10,7 +10,7 @@ import TimeOfComent from "../TimeOfComent";
 export default function ProductDetail() {
   const { t } = useTranslation();
 
-  const { cart, setCart } = useAppContext();
+  const { cart, setCart, like, setLike } = useAppContext();
   const { newId } = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState(null);
@@ -141,17 +141,39 @@ export default function ProductDetail() {
     );
   }
 
-  console.log(product);
+  function handleSaveToLike() {
+    const inLike = like.find((el) => el.id === product.id);
+
+    if (inLike) {
+      setLike(like.filter((el) => el.id !== product.id));
+    } else {
+      setLike([...like, product]);
+    }
+  }
 
   return (
     <div className="">
       <div className="container">
         <div className="">
-          <div className="mb-10">
-            <h2 className="text-[20px] font-semibold mb-[5px]">
-              {product.title}
-            </h2>
-            <Rating rating={product.rating} />
+          <div className="flex justify-between p-[0_30px_0_0] items-center">
+            <div className="mb-10">
+              <h2 className="text-[20px] font-semibold mb-[5px]">
+                {product.title}
+              </h2>
+              <Rating rating={product.rating} />
+            </div>
+            <div
+              onClick={handleSaveToLike}
+              className="w-[30px] cursor-pointer h-[30px] rounded-full flex items-center justify-center bg-white"
+            >
+              <i
+                className={`bi ${
+                  like.find((el) => el.id === product.id)
+                    ? "bi-heart-fill text-[#7000FFFF]"
+                    : "bi-heart"
+                } text-[30px]`}
+              ></i>
+            </div>
           </div>
           <div className="flex items-start justify-between">
             <div className="">
@@ -162,7 +184,7 @@ export default function ProductDetail() {
                       <img
                         onClick={() => setImg(el)}
                         src={el}
-                        className="w-[63px] h-[84px] rounded-lg bg-gray-300 cursor-pointer hover:opacity-80 transition"
+                        className="w-[63px] h-[84px] rounded-lg object-contain bg-gray-300 cursor-pointer hover:opacity-80 transition"
                         key={el}
                         alt=""
                       />
@@ -170,7 +192,7 @@ export default function ProductDetail() {
                   ) : (
                     <img
                       src={product.thumbnail}
-                      className="w-[63px] h-[84px] rounded-lg bg-gray-300 cursor-pointer hover:opacity-80 transition"
+                      className="w-[63px] h-[84px] rounded-lg object-contain bg-gray-300 cursor-pointer hover:opacity-80 transition"
                       key={el}
                       alt=""
                     />
@@ -178,15 +200,19 @@ export default function ProductDetail() {
                 </div>
                 <div className="flex gap-3">
                   <img
-                    className="bg-gray-300 rounded-lg w-[300px] h-[400px]"
+                    className="bg-gray-300 rounded-lg object-contain w-[300px] h-[400px]"
                     src={img}
                     alt=""
                   />
-                  <img
-                    className="bg-gray-300 rounded-lg w-[300px] h-[400px]"
-                    src={product.images[2]}
-                    alt=""
-                  />
+                  {product.images[2] ? (
+                    <img
+                      className="bg-gray-300 rounded-lg object-contain w-[300px] h-[400px]"
+                      src={product.images[2]}
+                      alt=""
+                    />
+                  ) : (
+                    ""
+                  )}
                 </div>
               </div>
               <div className="mt-6">
@@ -196,7 +222,7 @@ export default function ProductDetail() {
                     <img
                       onClick={() => setImg(el)}
                       src={el}
-                      className="w-[70px] h-[90px] rounded-lg bg-gray-300 cursor-pointer hover:opacity-80 transition"
+                      className="w-[70px] h-[90px] object-contain rounded-lg bg-gray-300 cursor-pointer hover:opacity-80 transition"
                       key={el}
                       alt=""
                     />

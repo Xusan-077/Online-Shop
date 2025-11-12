@@ -1,9 +1,11 @@
 function Rating({ rating = 0, bottom, nan }) {
-  const fullStars = Math.floor(rating);
+  const fullStars = Math.trunc(rating);
   const hasHalfStar = rating - fullStars >= 0.5;
   const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
 
   const starSize = bottom ? "w-6 h-6" : "w-5 h-5";
+
+  console.log("fullStars", fullStars);
 
   return (
     <div className="flex items-center space-x-1">

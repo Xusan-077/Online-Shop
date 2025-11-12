@@ -58,5 +58,21 @@
     "title": "Sahifa topilmadi",
     "text": "Kechirasiz, siz izlagan sahifa mavjud emas yoki o‘chirilgan.",
     "back": "qaytish"
+  },
+  "footer": {
+    "about": "Biz haqimizda",
+    "contact": "Biz bilan bogʻlanish",
+    "faq": "Savol-Javob",
+    "for_users": "Foydalanuvchilarga",
+    "pickup_points": "Topshirish punktlari",
+    "vacancies": "Vakansiyalar",
+    "for_business": "Tadbirkorlarga",
+    "sell_on_uzum": "Uzumda soting",
+    "seller_login": "Sotuvchi kabinetiga kirish",
+    "open_pickup_point": "Topshirish punktini ochish",
+    "download_app": "Ilovani yuklab olish",
+    "social_media": "Uzum ijtimoiy tarmoqlarda",
+    "appstore": "AppStore",
+    "googleplay": "Google Play"
   }
 }

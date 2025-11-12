@@ -58,5 +58,21 @@
     "title": "Страница не найдена",
     "text": "Извините, страница, которую вы ищете, не существует или была удалена.",
     "back": "назад"
+  },
+  "footer": {
+    "about": "О нас",
+    "contact": "Связаться с нами",
+    "faq": "Вопрос-Ответ",
+    "for_users": "Пользователям",
+    "pickup_points": "Пункты выдачи",
+    "vacancies": "Вакансии",
+    "for_business": "Предпринимателям",
+    "sell_on_uzum": "Продавайте на Uzum",
+    "seller_login": "Войти в кабинет продавца",
+    "open_pickup_point": "Открыть пункт выдачи",
+    "download_app": "Скачать приложение",
+    "social_media": "Uzum в социальных сетях",
+    "appstore": "AppStore",
+    "googleplay": "Google Play"
   }
 }
